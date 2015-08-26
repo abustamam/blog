@@ -6,37 +6,9 @@
 </description>
     <link>http://abustamam.github.io/blog/</link>
     <atom:link href="http://abustamam.github.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 26 Aug 2015 12:33:04 -0700</pubDate>
-    <lastBuildDate>Wed, 26 Aug 2015 12:33:04 -0700</lastBuildDate>
+    <pubDate>Wed, 26 Aug 2015 12:49:20 -0700</pubDate>
+    <lastBuildDate>Wed, 26 Aug 2015 12:49:20 -0700</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
-    
-      <item>
-        <title>Welcome to Jekyll!</title>
-        <description>&lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
-
-&lt;p&gt;To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
-
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
-
-</description>
-        <pubDate>Wed, 26 Aug 2015 00:43:14 -0700</pubDate>
-        <link>http://abustamam.github.io/blog/jekyll/update/2015/08/26/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://abustamam.github.io/blog/jekyll/update/2015/08/26/welcome-to-jekyll.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-        <category>update</category>
-        
-      </item>
     
       <item>
         <title>Kickstarting your first MEAN web app with Yeoman</title>
@@ -787,6 +759,116 @@ Bugfix: Reset button works properly&lt;/p&gt;
         <pubDate>Sun, 08 Feb 2015 16:14:46 -0800</pubDate>
         <link>http://abustamam.github.io/blog/write-ups/2015/02/08/javascript-design-patterns-reflections.html</link>
         <guid isPermaLink="true">http://abustamam.github.io/blog/write-ups/2015/02/08/javascript-design-patterns-reflections.html</guid>
+        
+        <category>front-end,</category>
+        
+        <category>learning,</category>
+        
+        <category>nanodegree</category>
+        
+        
+        <category>write-ups</category>
+        
+      </item>
+    
+      <item>
+        <title>Optimizing a Portfolio</title>
+        <description>&lt;h1 id=&quot;heres-the-latest&quot;&gt;Here’s the latest&lt;/h1&gt;
+
+&lt;p&gt;The latest project was to optimize a portfolio. Once I get the project graded, I will update the &lt;a href=&quot;/mobile-portfolio&quot;&gt;portfolio&lt;/a&gt; to be my own. However, here are some take-home points I got.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&quot;the-course&quot;&gt;The course&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.udacity.com/course/viewer#!/c-ud884-nd&quot;&gt;The course&lt;/a&gt; itself wasn’t bad. However, it definitely wasn’t interesting.&lt;/p&gt;
+
+&lt;p&gt;The course focused on the Critical Rendering Path (CRP) and how to optimize it. However, I felt it didn’t go into specifics, like how to optimize above-the-fold CSS. I had to look at resources elsewhere to learn what that was.&lt;/p&gt;
+
+&lt;p&gt;Aside from all that, I did learn a lot from the course, but I feel I learned more from the &lt;a href=&quot;https://developers.google.com/web/fundamentals/&quot;&gt;Google web fundamentals&lt;/a&gt; guide (incidentally, written by one of the lecturers in the course!).&lt;/p&gt;
+
+&lt;h2 id=&quot;the-project&quot;&gt;The project&lt;/h2&gt;
+
+&lt;p&gt;The project was to optimize &lt;a href=&quot;github.com/udacity/frontend-nanodegree-mobile-portfolio&quot;&gt;this portfolio&lt;/a&gt; in two primary ways.&lt;/p&gt;
+
+&lt;p&gt;The first goal was to optimize the website such that it got a score of 90+ on &lt;a href=&quot;https://developers.google.com/speed/pagespeed/insights/?url=abustamam.github.io%2Fmobile-portfolio&quot;&gt;Page Speed Insights&lt;/a&gt;. This was done by analyzing the CRP and performing optimizations such as inlining critical CSS and async-ing non-critical scripts.&lt;/p&gt;
+
+&lt;p&gt;The second goal was to optimize the &lt;a href=&quot;mobile-portfolio/pizza.html&quot;&gt;pizza page&lt;/a&gt; such that it ran at 60 FPS. This was done by performing several JavaScript optimizations.&lt;/p&gt;
+
+&lt;p&gt;The main issue I ran into with the project was the task automaters (more on this &lt;a href=&quot;#gulp&quot;&gt;below&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;The project itself was pretty simple. In fact, though I thought the project would be incredibly boring (make one change, measure, make another change, measure) it certainly wasn’t that.&lt;/p&gt;
+
+&lt;p&gt;Granted, I did need to measure the results of each change I made, but it wasn’t terrible. In fact, my task-runner did most of the work for me. I just made sure that all my tasks were written correctly.&lt;/p&gt;
+
+&lt;p&gt;The second part of the project was optimizing the JavaScript.&lt;/p&gt;
+
+&lt;p&gt;The tough part about this was that I didn’t know too much about requestAnimationFrame. So I learned! And that’s what life is all about. So I learned about the rAF, and used it to optimize my JavaScript.&lt;/p&gt;
+
+&lt;p&gt;Also, I moved variable declarations outside of functions/for loops, if the variables were constant throughout. For example, there will always be x number of pizzas, so why not push that into a variable and iterate over that array? Fewer calculations = better performance.&lt;/p&gt;
+
+&lt;h2 id=&quot;using-gulpjs&quot;&gt;Using Gulp.js&lt;/h2&gt;
+
+&lt;p&gt;I must admit, I started using Grunt first. Then I learned about Gulp and decided to try it out.&lt;/p&gt;
+
+&lt;p&gt;Both of them looked incredibly complicated, but as I played around with them I learned a lot about them, and also about node.js. Though they seemed complicated, they really weren’t.&lt;/p&gt;
+
+&lt;p&gt;Since I ended up using Gulp, I won’t talk about Grunt.&lt;/p&gt;
+
+&lt;p&gt;With Gulp, all you do is pipe streams of data around. You start with a source, and then you perform a ‘task’ on it, and you can do whatever you want with the result of that task (even perform another task on it).&lt;/p&gt;
+
+&lt;p&gt;When you write your own tasks, you can add task dependencies:&lt;/p&gt;
+
+&lt;p&gt;```
+gulp.task(‘one’, function(){
+  // do something
+});&lt;/p&gt;
+
+&lt;p&gt;gulp.task(‘two’, [‘one’], function(){
+  // do another thing
+});&lt;/p&gt;
+
+&lt;p&gt;gulp.task(‘three’, [‘one’], function(){
+  // do something else
+});&lt;/p&gt;
+
+&lt;p&gt;gulp.task(‘default’, [‘two’, ‘three’]);
+```&lt;/p&gt;
+
+&lt;p&gt;The above code has a default task &lt;code&gt;default&lt;/code&gt;, which depends on ‘two’ and ‘three’. Since both of them depend on ‘one’, ‘one’ must finish before ‘two’ or ‘three’ begin. However, even though both of them depend on ‘one’, ‘one’ is only run once. Neat huh?&lt;/p&gt;
+
+&lt;p&gt;I used this to ‘clean’ before minification. Each minification task depended on &lt;code&gt;clean&lt;/code&gt;, which was run before any minification task. So my bulk-minification task &lt;code&gt;minify&lt;/code&gt; ran clean before running any single minification task. Very handy!&lt;/p&gt;
+
+&lt;p&gt;Now, back to the issues I ran into.&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&quot;gulp&quot;&gt;&lt;/a&gt;
+### Imagemin images can’t be huge&lt;/p&gt;
+
+&lt;p&gt;The first main issue was with &lt;code&gt;imagemin&lt;/code&gt; which is a great tool, but there was a weird problem.&lt;/p&gt;
+
+&lt;p&gt;It was failing with a strange error.&lt;/p&gt;
+
+&lt;p&gt;So I did some trial and error by removing certain files, and I found out that it didn’t fail when I took out the huge ‘pizzaria’ image file.&lt;/p&gt;
+
+&lt;p&gt;I surmised this was because the pizzaria image file was so big, it killed imagemin. So I deleted it, and this worked fine.&lt;/p&gt;
+
+&lt;p&gt;So that brings me to a lesson learned–sometimes you have to do trial-and-error to figure out what’s going wrong.&lt;/p&gt;
+
+&lt;h3 id=&quot;dont-forget-to-change-sources&quot;&gt;Don’t forget to change sources!&lt;/h3&gt;
+
+&lt;p&gt;To simplify my app, I moved all html files to the base (build), and all assets into their respective folders (i.e. img, css, js). I was running into so many errors when I was trying to optimize my pizza page.&lt;/p&gt;
+
+&lt;p&gt;It turns out that it was calling the wrong css file!&lt;/p&gt;
+
+&lt;p&gt;So if you’re going to restructure your app’s directory, make sure that you double check each page’s resources!&lt;/p&gt;
+
+&lt;h2 id=&quot;moral-of-the-story&quot;&gt;Moral of the story&lt;/h2&gt;
+
+&lt;p&gt;I learned a lot in this project, namely for task automation. Gulp is definitely a godsend when it comes to optimization, so I was happy to learn it. It took a while, but I finally got it down, and it was awesome!&lt;/p&gt;
+</description>
+        <pubDate>Tue, 20 Jan 2015 11:50:41 -0800</pubDate>
+        <link>http://abustamam.github.io/blog/write-ups/2015/01/20/optimizing-a-portfolio.html</link>
+        <guid isPermaLink="true">http://abustamam.github.io/blog/write-ups/2015/01/20/optimizing-a-portfolio.html</guid>
         
         <category>front-end,</category>
         
