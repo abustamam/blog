@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Welcome to Jekyll!</title>
-  <meta name="description" content="You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different wa...">
+  <title>Implementing Theme with Octopress and Jekyll Asset Pipeline</title>
+  <meta name="description" content="The purpose of this post is simple.">
 
   <link rel="stylesheet" href="/blog/css/main.css">
-  <link rel="canonical" href="http://abustamam.github.io/blog/jekyll/update/2015/08/26/welcome-to-jekyll.html">
+  <link rel="canonical" href="http://abustamam.github.io/blog/write-ups/2014/07/31/implementing-theme-with-octopress-and-jekyll-asset-pipeline.html">
   <link rel="alternate" type="application/rss+xml" title="Write Bright" href="http://abustamam.github.io/blog/feed.xml" />
 </head>
 
@@ -81,25 +81,45 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Welcome to Jekyll!</h1>
-    <p class="post-meta">Aug 26, 2015</p>
+    <h1 class="post-title">Implementing Theme with Octopress and Jekyll Asset Pipeline</h1>
+    <p class="post-meta">Jul 31, 2014</p>
   </header>
 
   <article class="post-content">
-    <p>You’ll find this post in your <code>_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code>jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+    <p>The purpose of this post is simple.</p>
 
-<p>To add new posts, simply add a file in the <code>_posts</code> directory that follows the convention <code>YYYY-MM-DD-name-of-post.ext</code> and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
+<p>Octopress does not have much documentation on installing themes. I know it is not the developer way to install a theme,
+but it is the developer way to create themes.</p>
 
-<p>Jekyll also offers powerful support for code snippets:</p>
+<p>Here is what I’ve learned while trying to import a Start Bootstrap theme to Octopress.</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="s2">&quot;Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="k">end</span>
-<span class="n">print_hi</span><span class="p">(</span><span class="s1">&#39;Tom&#39;</span><span class="p">)</span>
-<span class="c1">#=&gt; prints &#39;Hi, Tom&#39; to STDOUT.</span></code></pre></div>
+<!-- more -->
 
-<p>Check out the <a href="http://jekyllrb.com">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://github.com/jekyll/jekyll-help">Jekyll’s dedicated Help repository</a>.</p>
+<p>First, get to know the <code>rake install[optional theme name]</code> command. It’s actually the first task in the Rakefile:</p>
 
+<pre><code>desc "Initial setup for Octopress: copies the default theme into the path of Jekyll's generator. Rake install defaults to rake install[classic] to install a different theme run rake install[some_theme_name]"
+task :install, :theme do |t, args|
+  if File.directory?(source_dir) || File.directory?("sass")
+    abort("rake aborted!") if ask("A theme is already installed, proceeding will overwrite existing files. Are you sure?", ['y', 'n']) == 'n'
+  end
+  # copy theme into working Jekyll directories
+  theme = args.theme || 'classic'
+  puts "## Copying "+theme+" theme into ./#{source_dir} and ./sass"
+  mkdir_p source_dir
+  cp_r "#{themes_dir}/#{theme}/source/.", source_dir
+  mkdir_p "sass"
+  cp_r "#{themes_dir}/#{theme}/sass/.", "sass"
+  mkdir_p "#{source_dir}/#{posts_dir}"
+  mkdir_p public_dir
+end
+</code></pre>
+
+<p>What it does is scour the ./.themes directory and copies all the files from the <code>/source</code> and the <code>/sass</code> directories
+into the root.</p>
+
+<p>Thus, a complete theme must contain <code>/source</code> and <code>/sass</code> directories.</p>
+
+<p>From there, if you run <code>rake generate</code> it will process the sourcefiles and build the site.</p>
 
   </article>
 

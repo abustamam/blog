@@ -1,3 +1,3 @@
 source 'https://rubygems.org'
-
-gem 'jekyll-archives'
+  gem 'kramdown'
+  gem 'pygments.rb', "~>0.6.0"

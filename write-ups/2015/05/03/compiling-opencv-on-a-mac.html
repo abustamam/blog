@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Welcome to Jekyll!</title>
-  <meta name="description" content="You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different wa...">
+  <title>Compiling OpenCV on a Mac</title>
+  <meta name="description" content="I’ve been helping my dad out with some OpenCV stuff.">
 
   <link rel="stylesheet" href="/blog/css/main.css">
-  <link rel="canonical" href="http://abustamam.github.io/blog/jekyll/update/2015/08/26/welcome-to-jekyll.html">
+  <link rel="canonical" href="http://abustamam.github.io/blog/write-ups/2015/05/03/compiling-opencv-on-a-mac.html">
   <link rel="alternate" type="application/rss+xml" title="Write Bright" href="http://abustamam.github.io/blog/feed.xml" />
 </head>
 
@@ -81,25 +81,66 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Welcome to Jekyll!</h1>
-    <p class="post-meta">Aug 26, 2015</p>
+    <h1 class="post-title">Compiling OpenCV on a Mac</h1>
+    <p class="post-meta">May 3, 2015</p>
   </header>
 
   <article class="post-content">
-    <p>You’ll find this post in your <code>_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code>jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+    <p>I’ve been helping my dad out with some OpenCV stuff.</p>
 
-<p>To add new posts, simply add a file in the <code>_posts</code> directory that follows the convention <code>YYYY-MM-DD-name-of-post.ext</code> and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
+<p>I ran into so many problems trying to compile OpenCV that I’m writing a tutorial on how I compiled it on my Mac.</p>
 
-<p>Jekyll also offers powerful support for code snippets:</p>
+<!-- more -->
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="s2">&quot;Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="k">end</span>
-<span class="n">print_hi</span><span class="p">(</span><span class="s1">&#39;Tom&#39;</span><span class="p">)</span>
-<span class="c1">#=&gt; prints &#39;Hi, Tom&#39; to STDOUT.</span></code></pre></div>
+<p>You can install OpenCV quite simply with Homebrew, using the simple command:</p>
 
-<p>Check out the <a href="http://jekyllrb.com">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://github.com/jekyll/jekyll-help">Jekyll’s dedicated Help repository</a>.</p>
+<p><code>brew install opencv</code></p>
 
+<p>However, most OpenCV tutorials rely on you building it yourself as the directories would then be specific to Homebrew. Plus, you don’t get to make customizations to your compilation.</p>
+
+<p>So let’s build it ourselves! I used <a href="http://mac-opencv-projects.blogspot.com/2014/01/installing-opencv-on-mac-os-x-1091.html">this</a> tutorial, but it wasn’t sufficient, so I’m adding what worked for me.</p>
+
+<p>Keep in mind that your mileage may vary. This is my environment:</p>
+
+<p>Mac OS X Yosemite 10.10.2
+Xcode 6.3.1 (6D1002)
+OpenCV 2.4.8.0
+Homebrew 0.9.5
+cmake 3.1.0</p>
+
+<p>So, first you’ll want to download the <a href="http://opencv.org/downloads.html">latest version of OpenCV</a>. I used the latest stable, which as of this writing, is 2.4.8.0. Unzip this anywhere (I put it onto my Desktop).</p>
+
+<p><strong>Note: I’ve heard bad things happening to people who unzip OpenCV into a directory with a space in it. So, don’t do that, just in case.</strong></p>
+
+<p>Now, for some reason the 2.4.8.0 version of OpenCV throws an error when you try to build it using Clang. So you’ll want to change one of the files to the code here: <a href="https://github.com/Itseez/opencv/commit/35f96d6da76099d80180439c857a4abe5cb17966">Fixing the LatestPoints problem</a></p>
+
+<p>Go to the following file and replace it with the code in the above link:</p>
+
+<p><code>[opencvdirectory]/modules/legacy/src/calibfilter.cpp</code></p>
+
+<p>That will save you some headache (it did for me).</p>
+
+<p>Secondly, you’ll need CMake.</p>
+
+<p><code>brew install cmake</code> will work (that’s what I used) but if you don’t use Homebrew then just download it from the <a href="http://www.cmake.org/download/">website</a>.</p>
+
+<p>CD into your OpenCV directory, make a <code>build</code> directory, and cd into that too.</p>
+
+<p><code>
+$ cd ~/Desktop/opencv
+$ mkdir build
+$ cd build
+</code></p>
+
+<p>Then build and install OpenCV:</p>
+
+<p><code>
+$ cmake -G "Unix Makefiles" ..  
+$ make -j8  
+$ sudo make install
+</code></p>
+
+<p>This will install to /usr/local. Keep this in mind for future reference.</p>
 
   </article>
 

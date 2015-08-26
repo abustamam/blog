@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>One Month Stripe Payments Part 1</title>
+  <meta name="description" content="I first started coding with One Month Rails. It was a very simple tutorial to go through, and it took me a month to go through it.">
+
+  <link rel="stylesheet" href="/blog/css/main.css">
+  <link rel="canonical" href="http://abustamam.github.io/blog/write-ups/2014/08/17/one-month-stripe-payments.html">
+  <link rel="alternate" type="application/rss+xml" title="Write Bright" href="http://abustamam.github.io/blog/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/blog/">Write Bright</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/blog/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/blog/categories/write-ups/index.html">Category: write-ups</a>
+          
+        
+          
+          <a class="page-link" href="/blog/categories/productivity/index.html">Category: productivity</a>
+          
+        
+          
+          <a class="page-link" href="/blog/categories/musings/index.html">Category: musings</a>
+          
+        
+          
+          <a class="page-link" href="/blog/categories/writeups/index.html">Category: writeups</a>
+          
+        
+          
+          <a class="page-link" href="/blog/categories/jekyll/index.html">Category: jekyll</a>
+          
+        
+          
+          <a class="page-link" href="/blog/categories/update/index.html">Category: update</a>
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">One Month Stripe Payments Part 1</h1>
+    <p class="post-meta">Aug 17, 2014</p>
+  </header>
+
+  <article class="post-content">
+    <p>I first started coding with One Month Rails. It was a very simple tutorial to go through, and it took me a month to go through it.</p>
+
+<p>Now, <a href="http://mbsy.co/onemonth/10032515">One Month Stripe Payments has been released</a>. I finished it in a week.</p>
+
+<!-- more -->
+
+<p>The finished product can be viwed <a href="http://calm-everglades-6719.herokuapp.com">here</a>. I edited a few things of course, I just wanted to get a feel of how things worked.</p>
+
+<p>Now, I’m re-coding the project to make a website for a friend. You can follow along with the <a href="https://github.com/abustamam/stuart_welch">Github repo</a></p>
+
+<p>First, to start, I learned something the hard way. Make sure that your project path does not contain any spaces. After probably hours of troubleshooting, I finally elected to change my <code>Rails projects</code> directory to <code>Rails_Projects</code> and everything worked fine. So don’t make my mistake!</p>
+
+<p>Second, here are a list of things you should know about the app:</p>
+
+<ul>
+  <li>Ruby version: 2.1.0</li>
+  <li>Rails version: 4.1.1</li>
+  <li>Using sqlite3 for development</li>
+  <li>Using pg for production (in Heroku)</li>
+  <li>Using haml</li>
+</ul>
+
+<p>You’re free to make the app in whichever way you’d like, of course. But this write-up will be following those constraints. Your Gemfile should look something like this:</p>
+
+<p>``` ruby Gemfile
+source ‘https://rubygems.org’
+source ‘http://gems.github.com’</p>
+
+<p>ruby ‘2.1.0’</p>
+
+<h1 id="bundle-edge-rails-instead-gem-rails-github-railsrails">Bundle edge Rails instead: gem ‘rails’, github: ‘rails/rails’</h1>
+<p>gem ‘rails’, ‘4.1.1’
+# Use sqlite3 as the database for Active Record in development and test
+gem ‘sqlite3’, group: [:development, :test]</p>
+
+<h1 id="use-postgres-as-the-database-in-production">Use postgres as the database in production</h1>
+<p>gem ‘pg’, group: :production</p>
+
+<h1 id="add-12-factor-for-heroku">Add 12 factor for Heroku</h1>
+<p>gem ‘rails_12factor’, group: :production</p>
+
+<h1 id="use-bootstrap">Use bootstrap</h1>
+<p>gem ‘bootstrap-sass’</p>
+
+<h1 id="use-scss-for-stylesheets">Use SCSS for stylesheets</h1>
+<p>gem ‘sass-rails’, ‘~&gt; 4.0.3’</p>
+
+<h1 id="use-uglifier-as-compressor-for-javascript-assets">Use Uglifier as compressor for JavaScript assets</h1>
+<p>gem ‘uglifier’, ‘&gt;= 1.3.0’</p>
+
+<h1 id="use-coffeescript-for-jscoffee-assets-and-views">Use CoffeeScript for .js.coffee assets and views</h1>
+<p>gem ‘coffee-rails’, ‘~&gt; 4.0.0’</p>
+
+<h1 id="use-figaro-for-securely-managing-credentials">Use figaro for securely managing credentials</h1>
+<p>gem ‘figaro’</p>
+
+<h1 id="use-jquery-as-the-javascript-library">Use jquery as the JavaScript library</h1>
+<p>gem ‘jquery-rails’</p>
+
+<h1 id="turbolinks-makes-following-links-in-your-web-application-faster-read-more-httpsgithubcomrailsturbolinks">Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks</h1>
+<p>gem ‘turbolinks’</p>
+
+<h1 id="build-json-apis-with-ease-read-more-httpsgithubcomrailsjbuilder">Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder</h1>
+<p>gem ‘jbuilder’, ‘~&gt; 2.0’</p>
+
+<h1 id="bundle-exec-rake-docrails-generates-the-api-under-docapi">bundle exec rake doc:rails generates the API under doc/api.</h1>
+<p>gem ‘sdoc’, ‘~&gt; 0.4.0’,          group: :doc</p>
+
+<h1 id="spring-speeds-up-development-by-keeping-your-application-running-in-the-background-read-more-httpsgithubcomrailsspring">Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring</h1>
+<p>gem ‘spring’,        group: :development</p>
+
+<h1 id="use-haml">Use haml</h1>
+<p>gem ‘haml’</p>
+
+<h1 id="add-stripe-for-payment-processing">Add stripe for payment processing</h1>
+<p>gem ‘stripe’, :git =&gt; ‘https://github.com/stripe/stripe-ruby’</p>
+
+<h1 id="use-letter-opener-in-dev">Use letter opener in dev</h1>
+<p>gem ‘letter_opener’, :group =&gt; :development</p>
+
+<h1 id="use-automated-admin-system">Use Automated Admin System</h1>
+<p>gem ‘activeadmin’, github: ‘gregbell/active_admin’</p>
+
+<h1 id="use-devise">Use devise</h1>
+<p>gem ‘devise’</p>
+
+<h1 id="use-activemodel-hassecurepassword">Use ActiveModel has_secure_password</h1>
+<p>gem ‘bcrypt’, ‘~&gt; 3.1.7’
+```</p>
+
+<p>Since we’re using <code>pg</code> instead of <code>sqlite3</code> as our database, let’s remove it from the production part of the database file.</p>
+
+<p>Run <code>bundle install --without production</code> and you should be ready to run!</p>
+
+<p>Go ahead and make your new rails app:</p>
+
+<p><code>rails new stripe_payments</code></p>
+
+<p>The first thing you’ll want to do is configure your home page.</p>
+
+<p><code>ruby app/controllers/pages_controllers.rb
+class PagesController &lt; ApplicationController
+   def home
+   end
+end
+</code></p>
+
+<p>Quick way to do this is to run <code>rails g controller pages</code> and the <code>pages_controller.rb</code> file will automatically be generated.</p>
+
+<p>Make the routes point to it:</p>
+
+<p><code>ruby config/routes.rb
+Rails.application.routes.draw do
+  root 'pages#home'
+end
+</code></p>
+
+<p>Now, create your home page. Remember I’ll be using HAML. The tutorial uses ERB. Use whichever suits your fancy.</p>
+
+<p><code>html app/views/pages/home.html.haml
+Hello world!
+</code></p>
+
+<p>At this point in the One Month Stripe Payments Tutorial, Chris “steals” (I mean borrows!) his own design from another one of his repositories. Of course there’s nothing wrong with it, since he’s using his own design. The next couple of days are focused on establishing the functionality of the page that it’s supposed to have. That being said, let’s just copy the finalized design and skip the legwork.</p>
+
+<p>Here are the files you’ll want to look out for:</p>
+
+<ul>
+  <li>app/views/layouts/application.html.haml</li>
+  <li>app/views/pages/home.html.haml</li>
+  <li>app/assets/ (everything inside)</li>
+  <li>config/environment/production.rb</li>
+</ul>
+
+<p>In that last file, the following changes were necessary:</p>
+
+<ul>
+  <li>Change <code>config.assets.compile</code> to <code>true</code></li>
+  <li>Uncomment <code>config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'</code></li>
+  <li>Change <code>config.assets.digest</code> to <code>true</code></li>
+</ul>
+
+<p>This was to make the assets work on Heroku.</p>
+
+<p>Again, here is the <a href="https://github.com/abustamam/stuart_welch">Github repo</a>.</p>
+
+<p>All in a day’s work right? Tomorrow we’ll finish adding Stripe functionality and we’ll be done, hopefully!</p>
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Write Bright</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>Write Bright</li>
+          <li><a href="mailto:rasheed.bustamam@gmail.com">rasheed.bustamam@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/abustamam">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">abustamam</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/rbustamam">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">rbustamam</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
