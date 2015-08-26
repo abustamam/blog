@@ -3,15 +3,16 @@ layout: post
 title: "Implementing Theme with Octopress and Jekyll Asset Pipeline"
 date: 2014-07-31 11:32:53 -0700
 comments: true
-categories: 
+categories: write-ups
+
 ---
 
-The purpose of this post is simple. 
+The purpose of this post is simple.
 
 Octopress does not have much documentation on installing themes. I know it is not the developer way to install a theme,
-but it is the developer way to create themes. 
+but it is the developer way to create themes.
 
-Here is what I've learned while trying to import a Start Bootstrap theme to Octopress. 
+Here is what I've learned while trying to import a Start Bootstrap theme to Octopress.
 
 <!-- more -->
 
@@ -33,11 +34,11 @@ First, get to know the `rake install[optional theme name]` command. It's actuall
       mkdir_p "#{source_dir}/#{posts_dir}"
       mkdir_p public_dir
     end
- 
+
 
 What it does is scour the ./.themes directory and copies all the files from the `/source` and the `/sass` directories
-into the root. 
+into the root.
 
-Thus, a complete theme must contain `/source` and `/sass` directories. 
+Thus, a complete theme must contain `/source` and `/sass` directories.
 
 From there, if you run `rake generate` it will process the sourcefiles and build the site.

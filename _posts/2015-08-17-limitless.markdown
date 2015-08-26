@@ -4,6 +4,7 @@ title: "Limitless"
 date: 2015-08-17 11:02:20 -0700
 comments: true
 categories: musings
+tags: stories
 ---
 
 I don't know if the following story is true, but I like the moral.

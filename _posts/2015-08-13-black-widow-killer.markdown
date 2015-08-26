@@ -4,6 +4,7 @@ title: "Black Widow Killer"
 date: 2015-08-13 23:45:03 -0700
 comments: true
 categories: musings
+tags: stories
 ---
 
 Sometimes I kill things for sport. A few weeks ago, I noticed a few black widows lurking around my house. I took it upon myself to rid my house of their presence.

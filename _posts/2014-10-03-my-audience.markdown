@@ -3,7 +3,8 @@ layout: post
 title: "Day 3: My Audience"
 date: 2014-10-03 22:05:17 -0700
 comments: true
-categories: musings, 500wed
+tags: 500wed
+categories: musings
 ---
 
 It's strange to think of myself as an authority figure. I view myself as a normal person going about every day life one day at a time.
@@ -32,4 +33,3 @@ In my fiction, I want to explore themes such as love and betrayal, but not so cl
 I want to be an authority on the human psyche--explore why someone would cheat on their beloved, or murder their best friend. In addition, the writing will reflect the state of mind of the character in the spotlight, so readers can join the character in his metamorphosis.
 
 To summarize, I want to be an authority on two things-- manifesting profound lessons from mundane ideas, and creating characters that transform into completely different people. Through writing, I hope to grow into this authority and speak to the hearts of my readers.
-

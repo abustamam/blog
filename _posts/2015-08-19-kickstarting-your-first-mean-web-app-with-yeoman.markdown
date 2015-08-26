@@ -3,7 +3,8 @@ layout: post
 title: "Kickstarting your first MEAN web app with Yeoman"
 date: 2015-08-19 21:42:32 -0700
 comments: true
-categories: mongodb, express, angular, node, fullstack, yeoman
+tags: mongodb, express, angular, node, fullstack, yeoman
+categories: write-ups
 ---
 
 I've been going through [Free Code Camp](http://www.freecodecamp.com) and after finishing the front-end "ziplines" (which require a writeup of their own, eventually) I'm finally getting set for the fullstack "basejumps."

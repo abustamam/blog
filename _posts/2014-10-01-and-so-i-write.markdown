@@ -3,7 +3,8 @@ layout: post
 title: "Day 1: And so I write"
 date: 2014-10-01 00:22:45 -0700
 comments: true
-categories: musings, 500wed
+tags: 500wed
+categories: musings
 ---
 
 Who am I? Well, in the scheme of things, I'm a nobody. Probably not going to go down in history for anything worthwhile.
