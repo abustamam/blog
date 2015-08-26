@@ -6,8 +6,8 @@
 </description>
     <link>http://abustamam.github.io/blog/</link>
     <atom:link href="http://abustamam.github.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 26 Aug 2015 07:57:13 -0700</pubDate>
-    <lastBuildDate>Wed, 26 Aug 2015 07:57:13 -0700</lastBuildDate>
+    <pubDate>Wed, 26 Aug 2015 08:12:04 -0700</pubDate>
+    <lastBuildDate>Wed, 26 Aug 2015 08:12:04 -0700</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -46,6 +46,667 @@
         <category>jekyll</category>
         
         <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>Kickstarting your first MEAN web app with Yeoman</title>
+        <description>&lt;p&gt;I’ve been going through &lt;a href=&quot;http://www.freecodecamp.com&quot;&gt;Free Code Camp&lt;/a&gt; and after finishing the front-end “ziplines” (which require a writeup of their own, eventually) I’m finally getting set for the fullstack “basejumps.”&lt;/p&gt;
+
+&lt;p&gt;However, on their &lt;a href=&quot;http://www.freecodecamp.com/challenges/waypoint-get-set-for-basejumps&quot;&gt;“Get Set” module&lt;/a&gt;, I ran into some problems with Cloud9 (primarily the memory issue), so I decided to figure out how to do some of these things on my local machine.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;This is primarily a document for me to refer to when I create more fullstack apps, but may as well share it.&lt;/p&gt;
+
+&lt;p&gt;Note that I am using OS X. I provide no guarantees in this document, as I’m writing it as it worked for me. Feel free to leave a comment though.&lt;/p&gt;
+
+&lt;h2 id=&quot;step-0-get-your-environment-set-up&quot;&gt;Step 0: get your environment set up&lt;/h2&gt;
+
+&lt;p&gt;You should have the following installed: &lt;a href=&quot;https://www.npmjs.com/&quot;&gt;npm&lt;/a&gt;, &lt;a href=&quot;http://brew.sh&quot;&gt;Homebrew&lt;/a&gt;, and probably &lt;a href=&quot;http://www.bower.io&quot;&gt;bower&lt;/a&gt;. Follow the links to install them.&lt;/p&gt;
+
+&lt;p&gt;Next, you should install &lt;a href=&quot;https://github.com/creationix/nvm&quot;&gt;nvm&lt;/a&gt; by running the following script in your terminal:&lt;/p&gt;
+
+&lt;p&gt;using curl:
+&lt;code&gt;curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.26.0/install.sh | bash&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;or Wget:
+&lt;code&gt;wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.26.0/install.sh | bash&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The stablest node is &lt;code&gt;node v0.12.7&lt;/code&gt; as of this writing.&lt;/p&gt;
+
+&lt;p&gt;I’m going to assume that you are in your project directory now. My project directory is &lt;code&gt;/sample&lt;/code&gt; so keep that in mind going forward.&lt;/p&gt;
+
+&lt;h2 id=&quot;step-1-get-yeoman-started-up&quot;&gt;Step 1: Get Yeoman started up&lt;/h2&gt;
+
+&lt;p&gt;Copy this into your terminal. Note that you must replace [YOUR_USERNAME_HERE] with your username:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;echo &quot;export NODE_PATH=$NODE_PATH:/Users/[YOUR_USERNAME_HERE]/.nvm/versions/node/v0.12.7/lib/node_modules/npm/&quot; &amp;gt;&amp;gt; ~/.bashrc &amp;amp;&amp;amp; source ~/.bashrc &amp;amp;&amp;amp; npm install -g yo grunt grunt-cli generator-angular-fullstack &amp;amp;&amp;amp; yo angular-fullstack&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This will install grunt, grunt-cli, and yeoman’s Fullstack Angular generator.&lt;/p&gt;
+
+&lt;p&gt;If the installs go well, Yeoman will start up and it will ask you questions. Answer as follows (feel free to answer however you want, but this is how I did):
+```
+What would you like to write scripts with? JavaScript&lt;/p&gt;
+
+&lt;p&gt;What would you like to write markup with? HTML&lt;/p&gt;
+
+&lt;p&gt;What would you like to write stylesheets with? CSS&lt;/p&gt;
+
+&lt;p&gt;What Angular router would you like to use? ngRoute&lt;/p&gt;
+
+&lt;p&gt;Would you like to include Bootstrap? Yes&lt;/p&gt;
+
+&lt;p&gt;Would you like to include UI Bootstrap? Yes&lt;/p&gt;
+
+&lt;p&gt;Would you like to use MongoDB with Mongoose for data modeling? Yes&lt;/p&gt;
+
+&lt;p&gt;Would you scaffold out an authentication boilerplate? Yes&lt;/p&gt;
+
+&lt;p&gt;Would you like to include additional oAuth strategies? Twitter&lt;/p&gt;
+
+&lt;p&gt;Would you like to use socket.io? No&lt;/p&gt;
+
+&lt;p&gt;May bower anonymously report usage statistics to improve the tool over time? (Y/n) Y
+```&lt;/p&gt;
+
+&lt;p&gt;If the last step fails (the &lt;code&gt;bower install&lt;/code&gt; and &lt;code&gt;npm install&lt;/code&gt;) then run it manually:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;bower install &amp;amp;&amp;amp; npm install&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;step-2-install-mongodb&quot;&gt;Step 2: Install MongoDB&lt;/h2&gt;
+
+&lt;p&gt;This part was complicated. But here we go.&lt;/p&gt;
+
+&lt;p&gt;First, install MongoDB (I used Homebrw):&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;brew install mongodb&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;IF all goes well, type the following into your terminal:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;mkdir data &amp;amp;&amp;amp; echo &#39;mongod --dbpath=data --nojournal --rest &quot;$@&quot;&#39; &amp;gt; mongod &amp;amp;&amp;amp; chmod a+x mongod&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Note that the Free Code Camp tutorial has this extra line: &lt;code&gt;--bind_ip=$IP&lt;/code&gt;, which didn’t work on my machine. I will find out soon enough if omitting it causes any problems.&lt;/p&gt;
+
+&lt;p&gt;Now, to start your database, just run…&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;./mongod&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Easy as pie.&lt;/p&gt;
+
+&lt;h2 id=&quot;step-3-start-your-server&quot;&gt;Step 3: Start your server&lt;/h2&gt;
+
+&lt;p&gt;This one is easy:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;grunt serve&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;A new window should automatically open up with Yeoman saying “Allo Allo!”&lt;/p&gt;
+
+&lt;h2 id=&quot;step-4-set-up-git&quot;&gt;Step 4: Set up git&lt;/h2&gt;
+
+&lt;p&gt;Simple too:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;git init &amp;amp;&amp;amp; git add . &amp;amp;&amp;amp; git commit -am &#39;initial commit&#39;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Then log into your github, and create a new repo, and use the instructions for pushing an existing repo onto github.&lt;/p&gt;
+
+&lt;p&gt;It’ll look something like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+git remote add origin [YOUR_GITHUB_REPO]
+git push -u origin master
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Yippee. Done!&lt;/p&gt;
+
+&lt;h2 id=&quot;step-5-set-up-heroku&quot;&gt;Step 5: Set up Heroku&lt;/h2&gt;
+
+&lt;p&gt;Make an account on &lt;a href=&quot;http://www.heroku.com&quot;&gt;Heroku&lt;/a&gt; (you might need to enter CC info to use MongoDB), and then type the following into your terminal:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;npm install grunt-contrib-imagemin --save-dev &amp;amp;&amp;amp; npm install --save-dev &amp;amp;&amp;amp; heroku login&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Then run&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;yo angular-fullstack:heroku&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Follow the prompts to get Heroku up and running!&lt;/p&gt;
+
+&lt;p&gt;Finally, to set up MongoDB, run the following:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;cd dist &amp;amp;&amp;amp; heroku config:set NODE_ENV=production &amp;amp;&amp;amp; heroku addons:create mongolab&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Incidentally, you can open heroku from the &lt;code&gt;dist&lt;/code&gt; folder by simply running &lt;code&gt;heroku open&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now, your Angular Fullstack app is good to go. Best of luck with your new app!&lt;/p&gt;
+</description>
+        <pubDate>Wed, 19 Aug 2015 21:42:32 -0700</pubDate>
+        <link>http://abustamam.github.io/blog/mongodb,/express,/angular,/node,/fullstack,/yeoman/2015/08/19/kickstarting-your-first-mean-web-app-with-yeoman.html</link>
+        <guid isPermaLink="true">http://abustamam.github.io/blog/mongodb,/express,/angular,/node,/fullstack,/yeoman/2015/08/19/kickstarting-your-first-mean-web-app-with-yeoman.html</guid>
+        
+        
+        <category>mongodb,</category>
+        
+        <category>express,</category>
+        
+        <category>angular,</category>
+        
+        <category>node,</category>
+        
+        <category>fullstack,</category>
+        
+        <category>yeoman</category>
+        
+      </item>
+    
+      <item>
+        <title>Limitless</title>
+        <description>&lt;h2 id=&quot;i-dont-know-if-the-following-story-is-true-but-i-like-the-moral&quot;&gt;I don’t know if the following story is true, but I like the moral.&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Written by someone being trained by Bruce Lee:
+“Bruce had me up to three miles a day, really at a good pace. We’d run the three miles in twenty-one or twenty-tow minutes. Just under eight minutes a mile [Note: when running on his own in 1968, Lee would get his time down to six-and-a-half minutes per mile].
+So this morning he said to me “We’re going to go five.”
+I said, “Bruce, I can’t go five. I’m a helluva lot older than you are, and I can’t do five.”
+He said, “When we get to three, we’ll shift gears and it’s only two more and you’ll do it.”
+I said “Okay, hell, I’ll go for it.”
+So we get to three, we go into the fourth mile and I’m okay for three or four minutes, and then I really begin to give out.
+I’m tired, my heart’s pounding, I can’t go any more and so I say to him, “Bruce if I run any more,” — and we’re still running — “if I run any more I’m liable to have a heart attack and die.”
+He said, “Then die.” It made me so mad that I went the full five miles.
+Afterward I went to the shower and then I wanted to talk to him about it.
+I said, you know, “Why did you say that?”
+He said, “Because you might as well be dead. Seriously, if you always put limits on what you can do, physical or anything else, it’ll spread over into the rest of your life. It’ll spread into your work, into your morality, into your entire being. There are no limits. There are plateaus, but you must not stay there, you must go beyond them. If it kills you, it kills you. A man must constantly exceed his level.”&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Mon, 17 Aug 2015 11:02:20 -0700</pubDate>
+        <link>http://abustamam.github.io/blog/musings/2015/08/17/limitless.html</link>
+        <guid isPermaLink="true">http://abustamam.github.io/blog/musings/2015/08/17/limitless.html</guid>
+        
+        
+        <category>musings</category>
+        
+      </item>
+    
+      <item>
+        <title>Black Widow Killer</title>
+        <description>&lt;p&gt;Sometimes I kill things for sport. A few weeks ago, I noticed a few black widows lurking around my house. I took it upon myself to rid my house of their presence.&lt;/p&gt;
+
+&lt;p&gt;I went around the house, looking for their thick webs, the yellow bulb of their egg sacs, anything that indicated their presence. And, with my trusty brick, I would smash any and all of their nests.&lt;/p&gt;
+
+&lt;p&gt;So far, me and that brick have killed over ten black widows, and countless more egg sacs.&lt;/p&gt;
+
+&lt;p&gt;I get a bit of a kick from killing black widows. They creep me out immensely, and I get so happy knowing that I am decreasing the risk of being injected by their venom.&lt;/p&gt;
+
+&lt;p&gt;In fact, I hate them so much that we hired an exterminator to rid their presence. He sprayed poison all over our yard to make sure they all die, and never come back.&lt;/p&gt;
+
+&lt;p&gt;If there were only one black widow left in the world, you can be sure I will hunt down that last black widow to ensure they cease to exist from my realm of existence.&lt;/p&gt;
+
+&lt;p&gt;…&lt;/p&gt;
+
+&lt;p&gt;Am I so different than Walter Palmer? A man, simply carrying out a pastime of his, who has been absolutely crucified by the public?&lt;/p&gt;
+
+&lt;p&gt;When it comes to pests around our houses, we are extremely inhumane. I routinely replace fly and moth traps in my house, never thinking twice that anything that gets caught in the sticky residue literally writhes around until it starves to death.&lt;/p&gt;
+
+&lt;p&gt;You should see the last moth-trap I replaced. It was literally covered in moths. Hundreds of moths that I sent to certain death by starving them.&lt;/p&gt;
+
+&lt;p&gt;Why is killing a bug and killing a lion different? Is it because the lion is so beautiful?&lt;/p&gt;
+
+&lt;p&gt;Many spiders can spin absolutely beautiful webs. I sometimes find myself staring at their webs, admiring the intricacies; how a little pest with no sentience was literally wired to produce a beautiful home for itself.&lt;/p&gt;
+
+&lt;p&gt;Some spiders themselves can be pretty beautiful too, in their own, creepy way.&lt;/p&gt;
+
+&lt;p&gt;That doesn’t stop me from killing them on the spot.&lt;/p&gt;
+
+&lt;p&gt;…&lt;/p&gt;
+
+&lt;p&gt;Is it because the lion was named?&lt;/p&gt;
+
+&lt;p&gt;Last year, a spider moved with my family from one house to another. When I found it housed in my room, I named it Greg and let it live undisturbed, as long as he stayed in his corner.&lt;/p&gt;
+
+&lt;p&gt;One time, he disappeared. I wondered where he went.&lt;/p&gt;
+
+&lt;p&gt;A few days later, he came back. I assumed he went on vacation, and traveled to tell his friends of his exciting adventures.&lt;/p&gt;
+
+&lt;p&gt;A few days after that, he met his demise under the paws of my cat.&lt;/p&gt;
+
+&lt;p&gt;How many named spiders have I killed unknowingly? Probably not many, since I doubt many people are weird enough to name their pests.&lt;/p&gt;
+
+&lt;p&gt;…&lt;/p&gt;
+
+&lt;p&gt;I think it’s a statement on our fundamental humanity; not the fact that we can kill things we view as pests without batting an eye, but the fact that we feel like we can pass judgment on a man who killed one animal as seamlessly as we kill our pests.&lt;/p&gt;
+
+&lt;p&gt;Was what he did abhorrent? Given the circumstances, yes. The lion was on a protected reserve, and he was tagged. But what if Walter didn’t know? Supposedly, he was simply doing what the guy who sold him the hunting license told him to do. It’s not up to us to figure out the truth. The Zimbabwe government is supposedly taking care of it.&lt;/p&gt;
+
+&lt;p&gt;But what if he really didn’t know? What if those people who wrote graffiti on his business, those people who threatened him with bodily harm, those people who said extremely nasty and vulgar things to him (anonymously), found out &lt;em&gt;after&lt;/em&gt; they carried out their supposed judgment, that he was innocent after all? That this was all just a simple misunderstanding?&lt;/p&gt;
+
+&lt;p&gt;Will a “sorry, mate” bring his dental practice back? Will it heal the wounds caused?&lt;/p&gt;
+
+&lt;p&gt;Why do we act so incongruent with ourselves when we assume the guise of an anonymous commenter?&lt;/p&gt;
+
+&lt;p&gt;Or is it that when we’re anonymous, we are our true selves, and we simply wear a mask whenever our identity is tied to our actions?&lt;/p&gt;
+
+&lt;p&gt;This is something to think about. Whether or not you agree with Walter Palmer’s actions (I certainly don’t), I hope you are able to set aside your emotions and see that the absolute outrage against Walter Palmer is a bit uncalled for.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 13 Aug 2015 23:45:03 -0700</pubDate>
+        <link>http://abustamam.github.io/blog/musings/2015/08/13/black-widow-killer.html</link>
+        <guid isPermaLink="true">http://abustamam.github.io/blog/musings/2015/08/13/black-widow-killer.html</guid>
+        
+        
+        <category>musings</category>
+        
+      </item>
+    
+      <item>
+        <title>Ramadan Kareem</title>
+        <description>&lt;p&gt;&lt;em&gt;Assalamualaikum wa Rahmatullahi wa Barakatuh&lt;/em&gt;,&lt;/p&gt;
+
+&lt;p&gt;Peace and blessings be upon you.&lt;/p&gt;
+
+&lt;p&gt;I greet you with the greeting of Islam because I am writing about one of the most important months in the Muslim calendar. That month is Ramadan.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;For those of you who are unaware, Ramadan is a time of “cleansing” in a Muslim’s life, both spiritually and physically. During the month of Ramadan, Muslims fast from sunrise (&lt;em&gt;fajr&lt;/em&gt;) to sunset (&lt;em&gt;maghrib&lt;/em&gt;) (nb, these terms are not translations). This means no food, no water, no sex.&lt;/p&gt;
+
+&lt;p&gt;Many people get so caught up in the minutia of Ramadan such as the moon-sighting and the exact time of sunrise and sunset that they forget the whole point of Ramadan, which is self-restraint.&lt;/p&gt;
+
+&lt;p&gt;It says in the Qur’an, &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;O ye who believe! Fasting is prescribed to you as it was prescribed to those before you, that ye may (learn) self-restraint.
+
+    —Surah Bakarah 2:183
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There is some ambiguity in the last term, “self-restraint.” Some translate it to be “god-awareness,” but for all intents and purposes, let’s go with self-restraint. &lt;/p&gt;
+
+&lt;p&gt;It’s an interesting concept, because there is nothing inherently wrong with eating or drinking. However, during the days of Ramadan, it is forbidden for the Muslim to eat or drink (there are some exceptions). &lt;/p&gt;
+
+&lt;p&gt;Ramadan is all about foregoing the normal pleasures of the day in order to attain a higher sense of awareness, both in terms of self and in terms of God. Every pang of hunger is a reminder of God, resulting in greater piety. Or, it could simply be a reminder of self-discipline. Let’s face it, if you can get up at 3:30am to eat breakfast, not eat or drink until 8:30pm, and then stay up and pray from 10 to midnight, there’s not much you &lt;em&gt;can’t&lt;/em&gt; do, if you have the motivation to do it. &lt;/p&gt;
+
+&lt;p&gt;And in this regard, I believe everyone can benefit from fasting, even if they are not religious. &lt;/p&gt;
+
+&lt;p&gt;So my challenge to you is to take one day this month (sometime between 18 June and 17 July, 2015) and fast. If you know a Muslim, tell them, “Hey, I’m fasting with you today.” &lt;/p&gt;
+
+&lt;p&gt;See how much your focus changes when you don’t have to worry about the basic pleasures of food. &lt;/p&gt;
+</description>
+        <pubDate>Thu, 18 Jun 2015 05:03:51 -0700</pubDate>
+        <link>http://abustamam.github.io/blog/musings,/religion/2015/06/18/ramadan-kareem.html</link>
+        <guid isPermaLink="true">http://abustamam.github.io/blog/musings,/religion/2015/06/18/ramadan-kareem.html</guid>
+        
+        
+        <category>musings,</category>
+        
+        <category>religion</category>
+        
+      </item>
+    
+      <item>
+        <title>The Speaker Within</title>
+        <description>&lt;p&gt;This past Saturday, May 2, I competed in the District 39, Division I, International Speech Contest. It was my first time competing, and I must say, I was quite frightened to go up on stage and speak. Here are my thoughts on this event. &lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h3 id=&quot;whats-the-big-deal-about-the-international-speech-contest&quot;&gt;What’s the big deal about the International Speech Contest?&lt;/h3&gt;
+
+&lt;p&gt;Not a tremendously &lt;em&gt;big&lt;/em&gt; deal, but it’s a tournament-like contest where each participant vies for the coveted title, “World Champion of Public Speaking.” &lt;/p&gt;
+
+&lt;p&gt;The title sounds fancy in itself, but what does it take to become a World Champion? In other words, what does it mean in the world of Toastmasters?&lt;/p&gt;
+
+&lt;p&gt;Well, let’s start with the requirements to even become a contestant! &lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;You must be in a club in good standing&lt;/li&gt;
+  &lt;li&gt;You must have delivered 6 speeches from your Competent Communicator book.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Six speeches won’t turn anyone into an amazing public speaker, but it’s good practice regardless.&lt;/p&gt;
+
+&lt;p&gt;Alright, so there are several levels of the competition. Here they are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Club&lt;/li&gt;
+  &lt;li&gt;Area&lt;/li&gt;
+  &lt;li&gt;Division&lt;/li&gt;
+  &lt;li&gt;District&lt;/li&gt;
+  &lt;li&gt;Semi-finals&lt;/li&gt;
+  &lt;li&gt;International (held in Vegas this year!)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;All contestants start at the club level, and if they win, they move on to the area level. Typically only the top speaker moves on, but in abnormal circumstances, the top 2 get to move on. &lt;/p&gt;
+
+&lt;p&gt;So, what’s the big deal? Well, most people who compete have been speaking and improving for several years. There is truly cutthroat competition, but it’s all in good fun. There are usually 6-8 participants at each level, so at any given level, you’re competing against the creme of the crop of the previous level, of their respective region. &lt;/p&gt;
+
+&lt;h3 id=&quot;rise-of-a-speaker&quot;&gt;Rise of a Speaker&lt;/h3&gt;
+
+&lt;p&gt;I was in an interesting predicament. I was one of two participants at my club level, the other person whom was not competing but merely giving a speech. So naturally, I won. &lt;/p&gt;
+
+&lt;p&gt;At the Area 92 contest, I was (again) one of two participants, and due to the number of Areas in Division I, both of us got to move on to the next level, even though I got second. (Caveat: The dude I competed against was amazing)&lt;/p&gt;
+
+&lt;p&gt;I reached the big leagues of the Division I contest. &lt;/p&gt;
+
+&lt;p&gt;Let me give you a rundown of the types of people I competed against:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;7&lt;/strong&gt; (!!) time winner of District 39 International Speech Contest&lt;/li&gt;
+  &lt;li&gt;people who have been speaking for ten years&lt;/li&gt;
+  &lt;li&gt;people old enough to be my parents&lt;/li&gt;
+  &lt;li&gt;people twice my age&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And then, there was me; the underdog. 24 years old, and just three years ago, I was unable to speak in public in any capacity. I was the Pacquiao, against seven Mayweathers. What chance did I stand?&lt;/p&gt;
+
+&lt;p&gt;As if to absolutely shatter every ounce of confidence I had in myself, I drew last in speaker order. I had to listen to 7, magnificently crafted and delivered, speeches; speeches that were written and rewritten, then told and retold in front of a mirror, then delivered and redelivered in front of a significant other or friend… &lt;/p&gt;
+
+&lt;p&gt;… speeches about finding inspiration …&lt;br /&gt;
+… speeches about lessons gleaned from the life of a deceased loved one …&lt;br /&gt;
+… speeches about overcoming addiction and determining to become someone new …&lt;br /&gt;
+… speeches about learning deep and profound things from something as simple as art …  &lt;/p&gt;
+
+&lt;p&gt;… which all reinforced the fact that my speech was the after-product of having nothing better to think about while driving; the delivery the product of saying it out loud during the 30 minutes it took for me to get to the venue. I had never uttered a word of that speech before the day I delivered it in competition. &lt;/p&gt;
+
+&lt;p&gt;I was so afraid. My palms were sweating. My feet were itching. I wanted to run away. I wanted to go home. I didn’t want to embarrass myself in front of dozens of people I didn’t know. I didn’t want my unpracticed, afterthought-of-a-speech to be juxtaposed with the wonderfully crafted speech of the 7-time winner of the District 39 International Speech Contest. &lt;/p&gt;
+
+&lt;p&gt;I was afraid that I would be seen as a fraud. A person who talked big about the importance of public speaking, but couldn’t even string two words together in front of a crowd.&lt;/p&gt;
+
+&lt;p&gt;It was a very disheartening hour, listening to these seven amazing speeches; one of whom I’d already placed second to. &lt;/p&gt;
+
+&lt;p&gt;However, when I got mic’d and readied to go up on stage, my mentor, Joey, said “I’m so proud of you. Break a leg.”&lt;/p&gt;
+
+&lt;p&gt;She (yes, Joey is a girl) believed in me when I didn’t believe in myself. &lt;/p&gt;
+
+&lt;p&gt;In the few seconds it took for me to run up on stage, I became determined that I wouldn’t give the speech as the person I was. I would give the speech as the person I wanted to be. No longer would I be a wannabe public speaker. That day, I was determined to &lt;strong&gt;BE&lt;/strong&gt; a public speaker. &lt;/p&gt;
+
+&lt;p&gt;I delivered the speech not how I wanted to deliver it, but better than how I wanted to deliver it. I delivered it with every ounce of my willpower to be the best that I could be, so as to not let down Joey. My mind communicated to my body, “Your message is worth it. Don’t mess this up.” And my body obliged. &lt;/p&gt;
+
+&lt;p&gt;Every single movement I subconsciously made, every single change in pitch and tone that I made, every single variation in volume, acted in accordance to deliver the most powerful message I ever could have imagined myself delivering. &lt;/p&gt;
+
+&lt;p&gt;To be perfectly honest, my memory of actually delivering the speech is quite fuzzy. All I know is that I ditched my nervousness, and made my butterflies fly in the formation of my &lt;strong&gt;message&lt;/strong&gt;. In that moment, naught else was more important.&lt;/p&gt;
+
+&lt;p&gt;I waited in anticipation for the results to be called. I wasn’t expecting my name to be called. Even though I gave it my all, I lacked the one thing everyone else had–immense amounts of practice. All of the introspection and psychological tricks in the world can’t make the delivery of a speech amazing. But I listened anyway. I wanted to see what the top three people did, that I didn’t do, that I could do in the future to make my speeches more powerful. &lt;/p&gt;
+
+&lt;p&gt;But then I heard it.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;“Third place: Rasheed Bustamam”&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I was shocked. I somehow managed to beat five seasoned speakers who have been working on their public speaking skills for several years, with my Frankenstein of a speech. &lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;“Second place: Patrick Lee”&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;My mind was still trying to comprehend the odds of me, the underdog, placing in this competition. I was still seeing myself as I saw myself three years ago–an inexperienced, wannabe speaker. Slowly I came to the realization…&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;“First place: David Goad”&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;… that I am now a public speaker. &lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;David Goad is a renowned public speaker in his local area; Patrick Lee is a highly skilled public speaker as well.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Rasheed Bustamam… has unleashed the speaker within. He is a public speaker.&lt;/strong&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 05 May 2015 21:59:19 -0700</pubDate>
+        <link>http://abustamam.github.io/blog/public/speaking,/toastmasters/2015/05/05/the-speaker-within.html</link>
+        <guid isPermaLink="true">http://abustamam.github.io/blog/public/speaking,/toastmasters/2015/05/05/the-speaker-within.html</guid>
+        
+        
+        <category>public</category>
+        
+        <category>speaking,</category>
+        
+        <category>toastmasters</category>
+        
+      </item>
+    
+      <item>
+        <title>Compiling OpenCV on a Mac</title>
+        <description>&lt;p&gt;I’ve been helping my dad out with some OpenCV stuff.&lt;/p&gt;
+
+&lt;p&gt;I ran into so many problems trying to compile OpenCV that I’m writing a tutorial on how I compiled it on my Mac. &lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;You can install OpenCV quite simply with Homebrew, using the simple command:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;brew install opencv&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;However, most OpenCV tutorials rely on you building it yourself as the directories would then be specific to Homebrew. Plus, you don’t get to make customizations to your compilation. &lt;/p&gt;
+
+&lt;p&gt;So let’s build it ourselves! I used &lt;a href=&quot;http://mac-opencv-projects.blogspot.com/2014/01/installing-opencv-on-mac-os-x-1091.html&quot;&gt;this&lt;/a&gt; tutorial, but it wasn’t sufficient, so I’m adding what worked for me.&lt;/p&gt;
+
+&lt;p&gt;Keep in mind that your mileage may vary. This is my environment: &lt;/p&gt;
+
+&lt;p&gt;Mac OS X Yosemite 10.10.2
+Xcode 6.3.1 (6D1002)
+OpenCV 2.4.8.0
+Homebrew 0.9.5
+cmake 3.1.0&lt;/p&gt;
+
+&lt;p&gt;So, first you’ll want to download the &lt;a href=&quot;http://opencv.org/downloads.html&quot;&gt;latest version of OpenCV&lt;/a&gt;. I used the latest stable, which as of this writing, is 2.4.8.0. Unzip this anywhere (I put it onto my Desktop).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note: I’ve heard bad things happening to people who unzip OpenCV into a directory with a space in it. So, don’t do that, just in case.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, for some reason the 2.4.8.0 version of OpenCV throws an error when you try to build it using Clang. So you’ll want to change one of the files to the code here: &lt;a href=&quot;https://github.com/Itseez/opencv/commit/35f96d6da76099d80180439c857a4abe5cb17966&quot;&gt;Fixing the LatestPoints problem&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Go to the following file and replace it with the code in the above link:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;[opencvdirectory]/modules/legacy/src/calibfilter.cpp&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;That will save you some headache (it did for me).&lt;/p&gt;
+
+&lt;p&gt;Secondly, you’ll need CMake. &lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;brew install cmake&lt;/code&gt; will work (that’s what I used) but if you don’t use Homebrew then just download it from the &lt;a href=&quot;http://www.cmake.org/download/&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;CD into your OpenCV directory, make a &lt;code&gt;build&lt;/code&gt; directory, and cd into that too.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+$ cd ~/Desktop/opencv
+$ mkdir build
+$ cd build
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Then build and install OpenCV:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+$ cmake -G &quot;Unix Makefiles&quot; ..  
+$ make -j8  
+$ sudo make install 
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This will install to /usr/local. Keep this in mind for future reference.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 03 May 2015 12:25:15 -0700</pubDate>
+        <link>http://abustamam.github.io/blog/opencv/2015/05/03/compiling-opencv-on-a-mac.html</link>
+        <guid isPermaLink="true">http://abustamam.github.io/blog/opencv/2015/05/03/compiling-opencv-on-a-mac.html</guid>
+        
+        
+        <category>opencv</category>
+        
+      </item>
+    
+      <item>
+        <title>Frontend Nanodegree Reflections</title>
+        <description>&lt;p&gt;Hello! I finally graduated from my Frontend Nanodegree program on Udacity. Here is a recap of my previous posts:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/blog/2014/10/31/reflection-on-nanodegree-pt-1/&quot;&gt;First reflection&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/2014/12/17/re-making-the-frogger-game/&quot;&gt;Second reflection (Bugger)&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/2015/01/20/optimizing-a-portfolio/&quot;&gt;Third reflection (Optimization project)&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/2015/02/08/javascript-design-patterns-reflections/&quot;&gt;Fourth reflection (Cat Clicker)&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This is my final reflection. &lt;/p&gt;
+
+&lt;h2 id=&quot;the-final-project&quot;&gt;The final project&lt;/h2&gt;
+
+&lt;p&gt;My final project was a &lt;a href=&quot;/Neighborhood-Map&quot;&gt;Neighborhood Map&lt;/a&gt; which is an interactive map that shows Groupons near your area.&lt;/p&gt;
+
+&lt;p&gt;It was interesting and fun to make, and of course very challenging. I’d love to hear feedback, however! &lt;/p&gt;
+
+&lt;p&gt;Here’s what I learned while working through my final project.&lt;/p&gt;
+
+&lt;h3 id=&quot;knockout-js-is-not-very-extensible&quot;&gt;Knockout JS is not very extensible&lt;/h3&gt;
+
+&lt;p&gt;I like Knockout, but it isn’t very powerful. There’s no clear “model” in the MV* architecture, so you’re kinda left up a creek without a paddle. &lt;/p&gt;
+
+&lt;p&gt;However, I did like the fact that bindings worked “automatically!” But I think Angular.js also has a similar feature, and is also a bit more robust. &lt;/p&gt;
+
+&lt;p&gt;Also, the docs suck. Like, really suck. I had no idea there was something called &lt;code&gt;arrayForEach&lt;/code&gt; because it’s nowhere to be found. I had to find it online, and it wasn’t even on the KnockoutJs website. (pro-tip: adding a search functionality to your docs is invaluable).&lt;/p&gt;
+
+&lt;p&gt;All-in-all, I would have enjoyed making the project more if it were with, say Angular, but the project spec required Knockout. &lt;/p&gt;
+
+&lt;p&gt;I would have liked to have used Django, but this is the “Front-End” Nanodegree, not Full-Stack. &lt;/p&gt;
+
+&lt;h3 id=&quot;google-maps-api-is-crunk&quot;&gt;Google Maps API is crunk&lt;/h3&gt;
+
+&lt;p&gt;Interestingly enough, I (again) got most of my GMAPs info from none other than Stack Overflow. When I wanted to ensure my map was dynamically resizing, it wasn’t on GMAPs, it was Stack Overflow. &lt;/p&gt;
+
+&lt;p&gt;I feel like they should have had more examples of using their API, because the list of commands and options that they made available weren’t very helpful. It’s nice to know they “existed”, but it would have also have been nice to know how they worked. &lt;/p&gt;
+
+&lt;h3 id=&quot;what-to-do-when-the-docs-suck&quot;&gt;What to do when the docs suck&lt;/h3&gt;
+
+&lt;p&gt;Two things. You can experiement (nothing’s stopping you from making a new project and testing it out in a sandbox environment) or you can just ask Stack Overflow. &lt;/p&gt;
+
+&lt;p&gt;I would recommend testing things yourself first, so that way when you do run into a problem on you can isolate the issue and concisely share what you’ve tried on Stack Overflow without the whole she-bang of your entire project. &lt;/p&gt;
+
+&lt;h3 id=&quot;dont-procrastinate&quot;&gt;Don’t procrastinate&lt;/h3&gt;
+
+&lt;p&gt;I have development hours for myself, and I would always find ways to “do” stuff during my development hours that weren’t really productive. That is to say that although I would be working on my project, I’d be doing something menial rather than solving an actual problem. In this way, I would still be working, but not really advancing my problem.&lt;/p&gt;
+
+&lt;p&gt;For example, I spent a long time on my sidebar because I didn’t want to add markers. I was putting off the adding of markers because it felt like a big task, so I did smaller tasks like edit the CSS for my sidebar. &lt;/p&gt;
+
+&lt;p&gt;The goal of making an app is to JFS (stands for Just F&amp;amp;$%ing Ship) so not everything needs to be completely optimized. Get a MVP (minimum viable product) going and you can tweak as you go after that. Otherwise, you’re wasting time and putting off the inevitable. &lt;/p&gt;
+
+&lt;h2 id=&quot;overall-review-of-the-nanodegree&quot;&gt;Overall review of the Nanodegree&lt;/h2&gt;
+
+&lt;p&gt;Overall, I enjoyed my experience with the Nanodegree, and I would definitely consider doing the Full Stack ND, and perhaps even Data Science. For right now, I’m going to focus on a couple of other courses that I’ve purchased but put off, so check back soon for those! &lt;/p&gt;
+</description>
+        <pubDate>Thu, 16 Apr 2015 09:47:47 -0700</pubDate>
+        <link>http://abustamam.github.io/blog/2015/04/16/frontend-nanodegree-reflections.html</link>
+        <guid isPermaLink="true">http://abustamam.github.io/blog/2015/04/16/frontend-nanodegree-reflections.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Solving the Singaporean Math Problem</title>
+        <description>&lt;p&gt;Trending today seems to be problem number 24 of a &lt;a href=&quot;http://www.cnn.com/2015/04/15/living/feat-cheryl-birthday-math-problem-goes-viral/&quot;&gt;Singaporean Math Olympiad test&lt;/a&gt;. Let’s not get bogged down why suddenly the Internet is clamouring over solving a seemingly impossible math problem, but since everyone wants to figure out the answer, let’s go through how to get it.&lt;/p&gt;
+
+&lt;p&gt;Disclaimer: I have not consulted any outside sources to verify my answer, but I’m fairly certain my logic is sound.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&quot;the-problem&quot;&gt;The problem&lt;/h2&gt;
+
+&lt;p&gt;The problem is straightforward. Albert and Bernard just met a girl named Cheryl. They want to know her birthday. Unfortunately, Cheryl is either a troll or is just a troubled soul (tr-oul?) and decides to make them earn that knowledge.&lt;/p&gt;
+
+&lt;p&gt;She gives them a list of possibilities of when her birthday will be:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;May 15&lt;/li&gt;
+  &lt;li&gt;May 16&lt;/li&gt;
+  &lt;li&gt;May 19&lt;/li&gt;
+  &lt;li&gt;June 17&lt;/li&gt;
+  &lt;li&gt;June 18&lt;/li&gt;
+  &lt;li&gt;July 14&lt;/li&gt;
+  &lt;li&gt;July 16&lt;/li&gt;
+  &lt;li&gt;August 14&lt;/li&gt;
+  &lt;li&gt;August 15&lt;/li&gt;
+  &lt;li&gt;August 17&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Then, since that clearly isn’t enough, she tells Albert the month of her birthday, and she tells Bernard the day of her birthday. &lt;/p&gt;
+
+&lt;p&gt;At this point, any normal human being would have just told the other dude what Cheryl told them, but not Albert and Bernard! &lt;/p&gt;
+
+&lt;p&gt;They conversed briefly:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+Albert: I don&#39;t know when Cheryl&#39;s birthday is, but I know that Bernard does not know too [sic].
+Bernard: At first I don&#39;t [sic] know when Cheryl&#39;s birthday is, but I know now.
+Albert: Then I also know when Cheryl&#39;s birthday is.
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Okay, is that confusing enough for you? &lt;/p&gt;
+
+&lt;p&gt;Let’s break the problem down. &lt;/p&gt;
+
+&lt;h2 id=&quot;the-solution&quot;&gt;The solution&lt;/h2&gt;
+
+&lt;p&gt;The key is not to solve the problem yourself, but to look at it from the lenses of Albert and Bernard. &lt;/p&gt;
+
+&lt;p&gt;Let’s look at the conversation between Albert and Bernard. Albert is given X month, Bernard is given Y day.&lt;/p&gt;
+
+&lt;p&gt;Since Albert only knows the month, any month with more than one date listed is an uncertainty. This part was obvious. What isn’t obvious is the implication of Albert knowing that Bernard does not know when Cheryl’s birthday is. &lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+Albert: I don&#39;t know when Cheryl&#39;s birthday is, but I know that Bernard does not know too [sic].
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;How could Albert know for sure that Bernard doesn’t know, despite not knowing what Bernard knows?&lt;/p&gt;
+
+&lt;p&gt;The answer is that ALL the listed dates within Albert’s month MUST be duplicates. &lt;/p&gt;
+
+&lt;p&gt;Why? Well, let’s say Bernard had the 18th. Right at the onset, Bernard would know the month, since there is only one month with the 18th (June). Same with the 19th. So we know that Bernard got neither the 18th nor the 19th. &lt;/p&gt;
+
+&lt;p&gt;Now, Albert KNOWS that Bernard does not know when her birthday is. By extension, this means that Albert knows that Bernard got a number that was a duplicate. &lt;/p&gt;
+
+&lt;p&gt;How can Albert know for sure that Bernard’s number was a duplicate? Because all of the numbers in Albert’s month were duplicates. &lt;/p&gt;
+
+&lt;p&gt;This means we can safely rule out May and June, as both of those months have a singleton date (19 and 18 respectively).&lt;/p&gt;
+
+&lt;p&gt;So by the first statement, we’ve ruled out May and June, and are left with the following…&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;July 14&lt;/li&gt;
+  &lt;li&gt;July 16&lt;/li&gt;
+  &lt;li&gt;August 14&lt;/li&gt;
+  &lt;li&gt;August 15&lt;/li&gt;
+  &lt;li&gt;August 17&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Okay, let’s analyze Bernard’s statement.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+Bernard: At first I don&#39;t [sic] know when Cheryl&#39;s birthday is, but I know now.
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s say, for argument’s sake, that Bernard was given 14. Would he be able to discern the month? The answer is no, since July and August both have 14. This means that Bernard’s number must be 15, 16, or 17. &lt;/p&gt;
+
+&lt;p&gt;Now, if he got 15 or 17, then he knows the month must be August. If he got 16, he knows the month must be July.&lt;/p&gt;
+
+&lt;p&gt;So, simply by Albert saying that he knows Bernard doesn’t know Cheryl’s birthday, Bernard’s number makes it obvious to Bernard what the birthday is. We still don’t know, however. &lt;em&gt;And neither does Albert&lt;/em&gt;, which is a key point I’ll come to in a second.&lt;/p&gt;
+
+&lt;p&gt;So we’ve ruled out July 14 and August 14. Let’s keep going.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;July 16&lt;/li&gt;
+  &lt;li&gt;August 15&lt;/li&gt;
+  &lt;li&gt;August 17&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Finally, the last statement, and the answer you’ve been waiting for. &lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+Albert: Then I also know when Cheryl&#39;s birthday is.
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Remember, Albert knows the month, but not the day. If Albert now knows Cheryl’s birthday, we can safely rule out August because he still wouldn’t have enough information (since there’s 15 and 17). &lt;/p&gt;
+
+&lt;p&gt;Therefore, the final answer is…&lt;/p&gt;
+
+&lt;h1 id=&quot;july-16&quot;&gt;July 16&lt;/h1&gt;
+
+&lt;p&gt;Hope you had fun. Feel free to reach out at rasheed.bustamam@gmail.com if you have any questions or need any clarifications. &lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 16 Apr 2015 09:04:38 -0700</pubDate>
+        <link>http://abustamam.github.io/blog/fun,/learning,/solving/2015/04/16/solving-the-singaporean-math-problem.html</link>
+        <guid isPermaLink="true">http://abustamam.github.io/blog/fun,/learning,/solving/2015/04/16/solving-the-singaporean-math-problem.html</guid>
+        
+        
+        <category>fun,</category>
+        
+        <category>learning,</category>
+        
+        <category>solving</category>
         
       </item>
     
