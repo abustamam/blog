@@ -1,0 +1,74 @@
+---
+layout: post
+title: "Day 10: Unintentionally Hired by Google"
+date: 2014-10-11 16:37:20 -0700
+comments: true
+categories: 500wed, musings
+---
+
+_Day 10: Return to the blog post or article you reviewed yesterday. (See description for details.)_
+
+_Return to the blog post or article you reviewed yesterday. Today, imitate its genre and purpose, but write about a topic or tell a story of your choosing. That is, write about what you want, but write in the language of the blog post or article you reviewed yesterday; make use of its logic and conventions and symbols; and find a way to offer a surprise!_
+
+<!-- more -->
+
+## Important note: ##
+
+The following article is fictional. It was written for the sole purpose of imitating the writing style of [this article](https://medium.com/@andrewjiang/unintentionally-in-yc-9dd0ccbaeb44). My name is not Chelsea, I did not drop out of Yale, nor do I work for Google (yet!), nor did I ever create an app called EncouragUr (though it's on my list!).
+
+Unintentionally Hired by Google
+========================
+Leaving an Ivy League school only to be hired by the world's most sought-after tech giant
+----------------------------------
+
+In May of 2013, I determined that the walls of my dorm room at Yale were limiting my creativity. I visited admissions to let them know not to re-enroll me for Fall semester, and at that point I was no longer a student. I sold off my belongings and booked a one-way flight to SFO, eager to start fresh. No job, no plan, not even a place to live (I would be what I called an "AirBnB couch surfer" for the first two months).
+
+As of this writing, it's exactly one year later, and ten months since I started employment at Google. How did this happen?
+
+Here's the entire unintentional story. 
+
+## Moving Fast and Breaking Things ##
+
+During the first two months living in the Bay Area, I slept in many different beds thanks to AirBnB, and survived off of dollar Taco Tuesdays and Top Ramen. I worked part-time at a grocery store to reduce the burn rate of my savings and get discounts on groceries. At nights would crank out prototypes, fleshing out new ideas every few weeks. 
+
+I made some garbage apps, and I made some priceless gems. Some of them still have potential, but I simply didn't have the drive to pursue them further, which leads me to the first lesson I learned: __You need to care deeply about the problem you're solving.__
+
+## "Let's chat." ##
+
+I began to feel a bit lonely and unfulfilled, so I decided to attend my first hackathon. I met with some great people at this hackathon, but the resulting product is the direct cause of my employment at Google. 
+
+The mission of this particular hackathon was to build something that one person can use to help another person in their lives. Our team built "EncouragUr," a way for people to send anonymous messages/postcards to their friends who may be feeling a bit unmotivated. 
+
+I shared the hack with my friends on Facebook and got a lot of positive feedback. One person in particular was my friend Justine, who worked at Google, left a simple comment: "Let's chat."
+
+I messaged her and we had dinner together, and she told me she'd shared the app with her hiring manager, saying that my passion for unleashing the greatness within people would be a great asset to Google. I was taken aback--I had no intentions of working for Google. I just wanted to freelance my way to paying bills and being debt-free. I thanked her and continued my merry ways of project-to-project, couch-to-couch living, anxiously awaiting that email. 
+
+## "Hi Chelsea. We heard about your work and would like to meet with you." ##
+
+I told one of my hosts about my situation and he told me that he'd heard that Google's hiring process was notoriously difficult. That made me even more anxious, so all my projects came to a dead stop as I began brushing up on my algorithm and data structure skills. 
+
+A week after that dinner, while I was aimlessly browsing Reddit to wind down, I got the email. 
+
+> From: Ryan (at Google)
+> To: Chelsea 
+>
+> Hi Chelsea. We heard about your work and would like to meet with you.
+>
+> Ryan
+> Hiring Manager at Google
+
+I could hardly believe my eyes. I quickly replied and was soon on the phone with Ryan, who scheduled me for an interview on the Tuesday of the next week.
+
+That weekend was manic. I did my best to solve problems on TopCoder, CodeAbbey, anything that could help me with my algorithmic thinking. I polished my interviewing skills and filled out my notebook with questions I thought I should ask at the interview. By the time Monday rolled around, I was breathing coffee, but I knew Dijkstra's algorithm better than the back of my hand. 
+
+I decided to take Monday to relax, so I could be well-rested for my big interview on Tuesday. 
+
+The day of the interview will always be forged in my memory. I nervously sat in the waiting room while another candidate was being interviewed. When they called me into the room, I was so nervous I tripped on the carpet while walking into the room. Classy. 
+
+Sitting in front of me was my interviewer: David Zen. He cut to the chase and had me solve a problem on a whiteboard. He asked me about my experience. My passions, my life goals. There was nary a moment of silence as our interview convened. 
+
+After perhaps the fastest half-hour of my life, I shook his hand, thanked him, and was on my way out. While on the BART back to SF, I called my boyfriend, my mom, my dad, my brother; anyone who I thought would care about this big interview. I was so excited and anxious and nervous that I didn't even notice the incoming call from the 408 area code. I finally noticed it when I got off the BART in SoMa, San Francisco, and promptly called back. 
+
+__It was Ryan, with an invitation to begin employment at Google the following week.__
+
+Salary and relocation would be negotiated in the following days, but I'd done it. Two months after I'd dropped out of school and flew to California with nothing but the clothes in my bag and my MacBook, I'd secured employment at Google. For those of you who want a career shift or just a new life, why wait? __Start now, you never know who will notice.__ Or, in Cal Newport's words: "Be so good they can't ignore you."
